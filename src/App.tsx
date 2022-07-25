@@ -1,7 +1,5 @@
 import { QueryClient, QueryClientProvider } from "react-query";
-import { RecoilRoot } from "recoil";
 import Router from "./Router";
-import GlobalStyle from "./styles/GlobalStyle";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -15,10 +13,7 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <RecoilRoot>
-          <GlobalStyle />
-          <Router />
-        </RecoilRoot>
+        <Router />
       </QueryClientProvider>
     </>
   );
