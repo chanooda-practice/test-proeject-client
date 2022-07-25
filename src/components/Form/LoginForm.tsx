@@ -1,10 +1,9 @@
-import React, {
-  ChangeEventHandler,
-  EventHandler,
-  FormEvent,
-  FormEventHandler,
-  useState,
-} from "react";
+import { ChangeEventHandler, FormEventHandler, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import Form from "./Form";
+import Input from "./Input";
+import Password from "./Password";
+import Submit from "./Submit";
 
 function LoginForm() {
   const [inputs, setInputs] = useState({
@@ -28,17 +27,26 @@ function LoginForm() {
 
   return (
     <>
-      <form onSubmit={onSubmit}>
-        <input name="id" type="text" onChange={onChange} placeholder="ID" value={inputs.id} />
-        <input
-          name="password"
-          type="password"
-          onChange={onChange}
-          placeholder="Password"
-          value={inputs.password}
-        />
-        <input type="submit" value="로그인" />
-      </form>
+      <Form onSubmit={onSubmit}>
+        <div className="flex flex-col justify-between h-full">
+          <div className="flex flex-col gap-2">
+            <Input name="id" onChange={onChange} placeholder="ID" value={inputs.id} />
+            <Password
+              name="password"
+              onChange={onChange}
+              placeholder="Password"
+              value={inputs.password}
+              className="py-2 rounded-md"
+            />
+          </div>
+          <div className="mt-10">
+            <Submit value="로그인" />
+            <NavLink className="text-white" to={"/signup"}>
+              sign up
+            </NavLink>
+          </div>
+        </div>
+      </Form>
     </>
   );
 }
