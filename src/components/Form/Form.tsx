@@ -8,10 +8,7 @@ function Form({
   children: React.ReactNode;
 }) {
   return (
-    <form
-      onSubmit={onSubmit}
-      className="w-[400px] m-auto bg-black p-4 rounded-xl mt-[calc((100vh_-_200px)_/_2)] opacity-80"
-    >
+    <form onSubmit={onSubmit} className="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md">
       {children}
     </form>
   );
