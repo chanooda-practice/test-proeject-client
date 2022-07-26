@@ -11,17 +11,16 @@ interface IInputs {
 
 function LoginForm() {
   const [inputs, setInputs] = useState<IInputs>({
-    username: "",
+    email: "",
     password: "",
   });
 
   const [errorMessage, setErrorMessage] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
   const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    console.log(e);
     const { value, name } = e.target;
     setInputs((prev) => {
       return {
@@ -46,25 +45,27 @@ function LoginForm() {
   console.log(inputs);
   return (
     <>
-      <div className="w-full max-w-xs">
+      <div className="max-w-[500px] mx-auto">
         <Form onSubmit={onSubmit}>
           <InputSet
-            text="Username"
+            text="이메일"
             onChange={onChange}
             value={inputs.username}
-            errorMessage={errorMessage.username}
-            name="username"
+            errorMessage={errorMessage.email}
+            name="email"
+            responsive={false}
           />
           <InputSet
-            text="Password"
+            text="비밀번호"
             onChange={onChange}
             value={inputs.password}
             errorMessage={errorMessage.password}
             name="password"
+            responsive={false}
           />
-          <div className="flex items-center justify-between">
-            <Submit value="Sign In" />
-            <FormLink to="#" text="Forgot Password?" />
+          <div className="flex items-center justify-between mx">
+            <FormLink to="/signup" text="회원가입" />
+            <Submit long={false} value="로그인" />
           </div>
         </Form>
       </div>

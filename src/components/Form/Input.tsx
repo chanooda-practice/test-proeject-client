@@ -1,15 +1,17 @@
 import { IInputProps } from "../../interfaces/FormInterface";
 
-function Input({ errorMessage, value, onChange, name }: IInputProps) {
-  console.log(value);
+function Input({ errorMessage, value, onChange, name, register, attr, placeholder }: IInputProps) {
   return (
     <input
-      className={`w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline ${
+      className={`block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none focus:outline-double focus:bg-white " ${
         errorMessage ? "border-red-500" : null
       }`}
       value={value}
       onChange={onChange}
       name={name}
+      placeholder={placeholder}
+      {...register}
+      {...attr}
     />
   );
 }
