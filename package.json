@@ -12,6 +12,8 @@
     "@types/react-dom": "^18.0.5",
     "@types/react-router": "^5.1.18",
     "@types/styled-components": "^5.1.25",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.33.1",

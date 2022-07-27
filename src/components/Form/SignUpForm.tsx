@@ -1,6 +1,7 @@
-import { match } from "assert";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { ISignUpFormInput } from "../../interfaces/FormInputInterface";
+//interface
+import { ISignUpFormInputs } from "../../interfaces/FormInputInterface";
+//component
 import Button from "./Button";
 import Form from "./Form";
 import FormLink from "./FormLink";
@@ -8,33 +9,21 @@ import FormRow from "./FormRow";
 import InputSet from "./InputSet";
 import Submit from "./Submit";
 
-function SignUpForm() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    watch,
-    setError,
-  } = useForm<ISignUpFormInput>();
-
-  const onValid: SubmitHandler<ISignUpFormInput> = (formData) => {
-    console.log(formData);
-  };
-
-  const onPhoneNumberBtnClick = () => {
-    const phoneNumber = watch("phoneNumber");
-    console.log(phoneNumber);
-    if (!phoneNumber.match(/[0-9]{3}-[0-9]{3,4}-[0-9]{4}/)) {
-      setError("phoneNumber", { message: "올바른 형식으로 입력해주세요." });
-    } else {
-      setError("phoneNumber", { message: undefined });
-    }
-  };
-
+function SignUpForm({
+  onSubmit,
+  register,
+  errors,
+  onPhoneNumberBtnClick,
+}: {
+  onSubmit: any;
+  register: any;
+  errors: any;
+  onPhoneNumberBtnClick: any;
+}) {
   return (
     <>
       <div className="max-w-[1000px] mx-auto">
-        <Form onSubmit={handleSubmit(onValid)}>
+        <Form onSubmit={onSubmit}>
           <FormRow>
             <InputSet
               name="name"

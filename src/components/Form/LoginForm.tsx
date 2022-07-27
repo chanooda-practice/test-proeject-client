@@ -1,16 +1,13 @@
 import { ChangeEventHandler, FormEventHandler, useState } from "react";
+import {  ILoginFormInputs } from "../../interfaces/FormInputInterface";
 //Component
 import Form from "./Form";
 import FormLink from "./FormLink";
 import InputSet from "./InputSet";
 import Submit from "./Submit";
 
-interface IInputs {
-  [key: string]: string;
-}
-
 function LoginForm() {
-  const [inputs, setInputs] = useState<IInputs>({
+  const [inputs, setInputs] = useState<ILoginFormInputs>({
     email: "",
     password: "",
   });

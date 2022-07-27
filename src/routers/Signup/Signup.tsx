@@ -1,9 +1,10 @@
-import SignUpForm from "../../components/Form/SignUpForm";
+// ViewModel
+import SignupViewModel from "../../viewModel/SignupViewModel";
 
 function Signup() {
   return (
     <>
-      <SignUpForm />
+      <SignupViewModel />
     </>
   );
 }
