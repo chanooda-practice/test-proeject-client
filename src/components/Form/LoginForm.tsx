@@ -1,45 +1,12 @@
 import { ChangeEventHandler, FormEventHandler, useState } from "react";
-import {  ILoginFormInputs } from "../../interfaces/FormInputInterface";
+import { ILoginFormInputs } from "../../interfaces/FormInputInterface";
 //Component
 import Form from "./Form";
 import FormLink from "./FormLink";
 import InputSet from "./InputSet";
 import Submit from "./Submit";
 
-function LoginForm() {
-  const [inputs, setInputs] = useState<ILoginFormInputs>({
-    email: "",
-    password: "",
-  });
-
-  const [errorMessage, setErrorMessage] = useState({
-    email: "",
-    password: "",
-  });
-
-  const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const { value, name } = e.target;
-    setInputs((prev) => {
-      return {
-        ...prev,
-        [name]: value,
-      };
-    });
-  };
-
-  const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault();
-    for (const key in inputs) {
-      console.log(typeof key);
-      if (inputs[key] === "") {
-        setErrorMessage((prev) => ({ ...prev, [key]: `${key}를 입력해주세요.` }));
-        break;
-      } else {
-        setErrorMessage((prev) => ({ ...prev, [key]: "" }));
-      }
-    }
-  };
-  console.log(inputs);
+function LoginForm({onSubmit,onChange,inputs,errorMessage}:) {
   return (
     <>
       <div className="max-w-[500px] mx-auto">

@@ -1,9 +1,9 @@
-import LoginForm from "../../components/Form/LoginForm";
+import HomeViewModel from "../../viewModel/HomeViewModel";
 
 function Home() {
   return (
     <>
-      <LoginForm />
+      <HomeViewModel />
     </>
   );
 }

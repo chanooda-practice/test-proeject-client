@@ -1,4 +1,5 @@
-import { ChangeEventHandler } from "react";
+import { ChangeEventHandler, FormEventHandler } from "react";
+import { ILoginFormInputs } from "./FormInputInterface";
 
 export interface ISetProps {
   text: string;
@@ -10,6 +11,9 @@ export interface ISetProps {
   responsive: boolean;
   attr?: any;
   placeholder?: string;
+  buttonName?: string;
+  onClick?: any;
+  type?: string;
 }
 
 export interface IInputProps {
@@ -21,6 +25,7 @@ export interface IInputProps {
   register?: any;
   attr?: any;
   placeholder?: string;
+  type?: string;
 }
 
 export interface IFormLinkProps {
@@ -35,4 +40,16 @@ export interface IErrorMessageProps {
 export interface ISubmitProps {
   value: string;
   long: boolean;
+}
+
+export interface IErrorMessage {
+  email: string;
+  password: string;
+}
+
+export interface ILoginForm {
+  onSubmit: FormEventHandler<HTMLFormElement>;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+  inputs: ILoginFormInputs;
+  errorMessage: IErrorMessage;
 }

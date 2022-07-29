@@ -1,8 +1,3 @@
-import { SubmitHandler, useForm } from "react-hook-form";
-//interface
-import { ISignUpFormInputs } from "../../interfaces/FormInputInterface";
-//component
-import Button from "./Button";
 import Form from "./Form";
 import FormLink from "./FormLink";
 import FormRow from "./FormRow";
@@ -13,12 +8,12 @@ function SignUpForm({
   onSubmit,
   register,
   errors,
-  onPhoneNumberBtnClick,
+  onClick,
 }: {
   onSubmit: any;
   register: any;
   errors: any;
-  onPhoneNumberBtnClick: any;
+  onClick: any;
 }) {
   return (
     <>
@@ -33,22 +28,27 @@ function SignUpForm({
               errorMessage={errors.name?.message}
             />
             <InputSet
-              name="email"
-              text="이메일"
+              buttonName="중복ID 확인"
+              text="ID"
               responsive={true}
-              register={register("email", { required: "이메일을 입력해주세요." })}
-              errorMessage={errors.email?.message}
+              register={register("userId", {
+                required: "ID를 입력해주세요.",
+              })}
+              errorMessage={errors.userId?.message}
+              onClick={onClick["userId"]}
             />
           </FormRow>
           <FormRow>
             <InputSet
               text="비밀번호"
+              type="password"
               responsive={true}
               register={register("password", { required: "비밀번호를 입력해주세요." })}
               errorMessage={errors.password?.message}
             />
             <InputSet
               text="비밀번호 확인"
+              type="password"
               responsive={true}
               register={register("confirmPassword", {
                 required: "비밀번호 확인란을 입력해주세요.",
@@ -58,6 +58,35 @@ function SignUpForm({
           </FormRow>
           <FormRow>
             <InputSet
+              text="PIN"
+              type="password"
+              responsive={true}
+              register={register("pin", {
+                required: "PIN을 입력해주세요.",
+                pattern: { value: /[0-9]{6}/g, message: "6자리 숫자를 입력해주세요." },
+              })}
+              errorMessage={errors.pin?.message}
+            />
+            <InputSet
+              text="PIN 확인"
+              type="password"
+              responsive={true}
+              register={register("confirmPin", {
+                required: "PIN 확인란을 입력해주세요.",
+              })}
+              errorMessage={errors.confirmPin?.message}
+            />
+          </FormRow>
+          <FormRow>
+            <InputSet
+              name="email"
+              text="이메일"
+              responsive={true}
+              register={register("email", { required: "이메일을 입력해주세요." })}
+              errorMessage={errors.email?.message}
+            />
+            <InputSet
+              buttonName="전화번호 확인"
               placeholder="123-1234-1234"
               text="전화번호"
               responsive={true}
@@ -69,14 +98,16 @@ function SignUpForm({
                 },
               })}
               errorMessage={errors.phoneNumber?.message}
+              onClick={onClick["phoneNumber"]}
               attr={{
                 type: "tel",
               }}
             />
-            <Button text="전화번호 확인" responsive={true} onClick={onPhoneNumberBtnClick} />
           </FormRow>
-          <FormLink to="/" text="로그인" />
-          <Submit value="회원가입" long={true} />
+          <div className="flex items-center justify-between mt-4">
+            <FormLink to="/" text="로그인" />
+            <Submit long={false} value="회원가입" />
+          </div>
         </Form>
       </div>
     </>
