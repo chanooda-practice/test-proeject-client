@@ -6,7 +6,7 @@ import FormLink from "./FormLink";
 import InputSet from "./InputSet";
 import Submit from "./Submit";
 
-function LoginForm({onSubmit,onChange,inputs,errorMessage}:) {
+function LoginForm({ onSubmit, onChange, inputs, errorMessage }: {}) {
   return (
     <>
       <div className="max-w-[500px] mx-auto">
