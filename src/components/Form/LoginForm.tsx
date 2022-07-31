@@ -1,22 +1,22 @@
-import { ChangeEventHandler, FormEventHandler, useState } from "react";
-import { ILoginFormInputs } from "../../interfaces/FormInputInterface";
+// Interface
+import { ILoginForm } from "../../interfaces/FormPropsInterface";
+import Form from "./FormParts/Form";
+import FormLink from "./FormParts/FormLink";
+import InputSet from "./FormParts/InputSet";
+import Submit from "./FormParts/Submit";
 //Component
-import Form from "./Form";
-import FormLink from "./FormLink";
-import InputSet from "./InputSet";
-import Submit from "./Submit";
 
-function LoginForm({ onSubmit, onChange, inputs, errorMessage }: {}) {
+function LoginForm({ onSubmit, onChange, inputs, errorMessage }: ILoginForm) {
   return (
     <>
       <div className="max-w-[500px] mx-auto">
         <Form onSubmit={onSubmit}>
           <InputSet
-            text="이메일"
+            text="ID"
             onChange={onChange}
-            value={inputs.username}
-            errorMessage={errorMessage.email}
-            name="email"
+            value={inputs.userId}
+            errorMessage={errorMessage.userId}
+            name="userId"
             responsive={false}
           />
           <InputSet

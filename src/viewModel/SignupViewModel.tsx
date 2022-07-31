@@ -41,7 +41,6 @@ function SignupViewModel() {
   const onValid: SubmitHandler<ISignUpFormInputs> = (formData) => {
     if (signupLoading) return;
 
-    console.log(formData);
     const { confirmPassword, confirmPin, ...data } = formData;
 
     // 비밀번호 다르면 에러 리턴
@@ -56,7 +55,6 @@ function SignupViewModel() {
     }
     // 문제 없으면 api 접근
     else {
-      console.log(data);
       signupMutate(data, {
         onSuccess: (data) => {
           return navigate("/");
@@ -99,7 +97,6 @@ function SignupViewModel() {
     // ID 중복 확인
     checkDuplicateIdMutate(userId, {
       onSuccess: (data) => {
-        console.log(data.data.isOk);
         if (data.data.isOk === true) alert("사용가능한 ID입니다.");
         else alert("이미 존재하는 ID 입니다.");
       },

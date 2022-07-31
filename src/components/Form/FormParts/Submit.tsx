@@ -1,4 +1,4 @@
-import { ISubmitProps } from "../../interfaces/FormPropsInterface";
+import { ISubmitProps } from "../../../interfaces/FormPropsInterface";
 
 function Submit({ value, long }: ISubmitProps) {
   return (

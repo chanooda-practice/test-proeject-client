@@ -1,4 +1,4 @@
-import { IInputProps } from "../../interfaces/FormPropsInterface";
+import { IInputProps } from "../../../interfaces/FormPropsInterface";
 
 function Label({ text }: IInputProps) {
   return (

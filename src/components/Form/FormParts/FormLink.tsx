@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { IFormLinkProps } from "../../interfaces/FormPropsInterface";
+import { IFormLinkProps } from "../../../interfaces/FormPropsInterface";
 
 function FormLink({ to, text }: IFormLinkProps) {
   return (

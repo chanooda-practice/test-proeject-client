@@ -43,7 +43,7 @@ export interface ISubmitProps {
 }
 
 export interface IErrorMessage {
-  email: string;
+  userId: string;
   password: string;
 }
 

@@ -1,8 +1,8 @@
-import Form from "./Form";
-import FormLink from "./FormLink";
-import FormRow from "./FormRow";
-import InputSet from "./InputSet";
-import Submit from "./Submit";
+import Form from "./FormParts/Form";
+import FormLink from "./FormParts/FormLink";
+import FormRow from "./FormParts/FormRow";
+import InputSet from "./FormParts/InputSet";
+import Submit from "./FormParts/Submit";
 
 function SignUpForm({
   onSubmit,

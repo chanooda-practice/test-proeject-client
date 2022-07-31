@@ -1,15 +1,21 @@
+import { useMutation } from "@tanstack/react-query";
 import { ChangeEventHandler, FormEventHandler, useState } from "react";
+// View
 import LoginForm from "../components/Form/LoginForm";
+// Interface
 import { ILoginFormInputs } from "../interfaces/FormInputInterface";
+import { signinApi } from "../Model/api/Auth/signinApi";
 
-function HomeViewModel() {
+function SigninViewModel() {
+  const { mutate, isLoading } = useMutation(signinApi);
+
   const [inputs, setInputs] = useState<ILoginFormInputs>({
-    email: "",
+    userId: "",
     password: "",
   });
 
   const [errorMessage, setErrorMessage] = useState({
-    email: "",
+    userId: "",
     password: "",
   });
 
@@ -24,6 +30,7 @@ function HomeViewModel() {
   };
 
   const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+    if (isLoading) return;
     e.preventDefault();
     for (const key in inputs) {
       if (inputs[key] === "") {
@@ -33,9 +40,22 @@ function HomeViewModel() {
         setErrorMessage((prev) => ({ ...prev, [key]: "" }));
       }
     }
+    mutate(inputs, {
+      onSuccess: (data) => {
+        window.localStorage.setItem("accessToken", data.data.accessToken);
+        window.location.href = "/";
+      },
+    });
   };
 
-  return <LoginForm />;
+  return (
+    <LoginForm
+      inputs={inputs}
+      onChange={onChange}
+      errorMessage={errorMessage}
+      onSubmit={onSubmit}
+    />
+  );
 }
 
-export default HomeViewModel;
+export default SigninViewModel;

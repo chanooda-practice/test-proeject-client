@@ -1,11 +1,4 @@
-import HomeViewModel from "../../viewModel/HomeViewModel";
-
 function Home() {
-  return (
-    <>
-      <HomeViewModel />
-    </>
-  );
+  return <div>Home</div>;
 }
-
 export default Home;
